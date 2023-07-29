@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRASS</title>
+    <link rel="icon" href="/Capstone/img/logo-title.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Noto+Sans&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+</head> 
+<body>
+    <header>
+    <nav>
+        <div class="layar-dalam">
+            <div class="logo">
+                <a href=""><img src="img/Logo.png" class="putih"/></a>
+                <a href=""><img src="img/Logo.png" class="hitam"/></a>
+            </div>
+           
+            <div class="menu">
+                <a href="#" class="tombol-menu">
+                    <span class="garis"></span>
+                    <span class="garis"></span>
+                    <span class="garis"></span>
+                </a>
+                <ul>
+                    <li><a href="#Beranda">Beranda</a></li>
+                    <li><a href="#TentangKami">Tentang Kami </a></li>
+                    <li><a href="#Deteksi">Deteksi Sampah</a></li>
+                    <li><a href="#Artikel">Artikel</a></li>
+                    <li><a href="#BankSampah">Bank Sampah</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </header>
+                <main>
+                    <section id="Beranda" class="layar-penuh">
+                        <div class="intro">
+                            <h4 style="color : #2B874A">TRASS</h4>
+                            <p class='jargon' style="color : #6EAB3B">KLASIFIKASI DAN DETEKSI JENIS SAMPAH </p>
+                            <p class="deskripsi">Masih bingung dengan cara memilah dan memilih sampah?
+                                Atau kurang mengetahui klasifikasi jenis sampah organik dan anorganik secara tepat? 
+                                <br><br>Yuk gunakan TRASS sebagai platform yang dapat membantu dan memudahkan kalian dalam mengklasifikasikan jenis sampah. 
+                            </br></p>
+                            <p style="color : #2B874A">Kenali jenis sampahmu dan lakukan deteksi sekarang!</p>
+                            <p>
+                                <a href="#Deteksi" class="tombol">Deteksi Sampah</a>
+                            </p>
+                        </div>
+                        <div class="ilustrasi">
+                            <img src="img/3detectkosong.png" alt="">
+                        </div>
+                
+                    </section>  
+                    <section id="TentangKami">
+                        <div class="layar-dalam">
+                            <h3 style="text-align: center;">Tentang Kami</h3>
+                        </div>
+                        <div class="tentangKami">
+                        <article class="containerTM">
+                            <div class="foto">
+                                <img src="img/aboutdetect.png" alt="">
+                            </div>
+                            <div class="paragraf">
+                                <h4 style="color : #086A35 "> Kenali jenis sampahmu dan buang sampah dengan tepat pada tempatnya!</h4>
+                                <p><b>TRASS</b> merupakan platform digital yang menyediakan layanan klasifikasi dan deteksi jenis sampah berdasarkan Organik dan Anorganik. Platform ini dibuat guna memberikan edukasi serta kemudahan kepada masyarakat dalam mendeteksi sampah di sekitar mereka. Selain itu, pada platform ini juga menggunakan website yang telah terintegrasi dengan sistem pemodelan machine learning sebagai pendeteksi jenis sampah. 
+                                </p>
+                                <p>
+                                    Lakukan deteksi jenis sampah dengan melalukan scan menggunakan kamera, bisa juga menggunggah gambar bahkan kalian juga dapat mengunduh gambar kalian loh! Baca artikel untuk mendapat atau mencari informasi terkait permasalahan Sampah di Indonesia. Deteksi sampahmu dan bijak membuang sampah yang sesuai pada tempatnya ya!
+                                </p>
+                            </div >
+                        </article>
+                        </div>
+                        </section>
+                        <section id="Deteksi">
+                            <div class="layar-dalam">
+                              <h3 style="text-align: center">Deteksi</h3>
+                              <p class="ringkasan">
+                                Tekan kamera atau masukan gambar dari galeri Anda untuk mendeteksi jenis sampah
+                              </p>
+                            </div>
+                            <div class="canvas">
+                                <div class="video">
+                                    <div class="webcam">
+                                    <video id="webcam" autoplay playsinline>
+                                    </video>
+                                </div>
+                                  </div>
+                            </div>
+                            <div class="takephoto" id="taketake">
+                                <button class="tombol-kamera take-btn" onclick="snapPhoto()">Ambil foto</button>
+                            </div>
+                            <div class="tombol-deteksi">
+                              <label for="inputImage" class="tombol-kamera"> Galeri </label>
+                              <input
+                                style="display: none"
+                                type="file"
+                                id="inputImage"
+                                accept="image/*" 
+                                onchange="renderImage(this)"
+                              />
+                              <button class="tombol-kamera" value="On" id="webcam-control"onclick="getPicture()"  target="_blank">
+                                Buka Kamera
+                              </button>
+                                                                                                                                                    
+                            </div>
+                            <div id="overlay">
+                              <div id="prediksi">
+                                <div class="tutup">
+                                    <button class="tombol-tutup-prediksi" id="close-modal-btn" onclick="closeBtn()">&#10005;</button>
+                                </div>
+                                <div class="image-popup">
+                                <img id="elemImage" class="d-none" src="" />
+                                <canvas id="canvas" class="d-none"></canvas>
+                                </div>
+                                <div>
+                                <p class="hasil-prediksi" id="elemPrediksi"></p>
+                                </div>
+                                <div class="konten" id="konten">
+                            </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section id="Artikel">
+                        <div class="layar-dalam">
+                            <h3 style="text-align: center;">Artikel</h3>
+                        </div>
+                        <article class="artikel">
+                            <div class="container">
+                                <div class='card'>
+                                    <img src='img/5manfaat.JPG' alt="gambar gagal dimuat">
+                                    <div class='card-body'>
+                                      <div class='card-text'>
+                                        <h2>5 Manfaat Pengolahan Sampah yang Baik</h2>
+                                        <p>Manfaat pengolahan sampah merupakan bahan sisa yang dapat merusak lingkungan hidup dan menyebabkan penyakit. Itulah gambaran sampah bagi sebagian orang yang tidak mau berfikir untuk menjadikannya lebih bermanfaat.</p>
+                                      </div>
+                                      <a href="https://dlh.semarangkota.go.id/5-manfaat-pengolahan-sampah-yang-baik/#:~:text=Manfaat%20pengolahan%20sampah%20dengan%20baik,terhadap%20ekosistem%20yang%20ada%20didalamnya.">Selengkapnya...</a>
+                                    </div>
+                                </div>
+                                 
+                                <div class='card'>
+                                    <img src='img/pentingnyaPengeloaan.JPG' alt="gambar gagal dimuat">
+                                    <div class='card-body'>
+                                      <div class='card-text'>
+                                        <h2>Pentingnya Pengelolaan Sampah untuk Kesejahteraan Masyarakat</h2>
+                                        <p>Universitas Ahmad Dahlan (UAD) melalui Bidang Humas dan Protokol berkesempatan mengunjungi desa binaan universitas yang berada di Desa Murtigading, Kecamatan Sanden, Kabupaten Bantul, Daerah Istimewa Yogyakarta, pada (11-06-2022).</p>
+                                      </div>
+                                      <a href="https://lldikti5.kemdikbud.go.id/home/detailpost/pentingnya-pengelolaan-sampah-untuk-kesejahteraan-masyarakat">Selengkapnya...</a>
+                                    </div>
+                                </div>
+                                <div class='card'>
+                                    <img src='img/bijakmemilah.JPG' alt="gambar gagal dimuat">
+                                    <div class='card-body'>
+                                      <div class='card-text'>
+                                        <h2>Alasan Kenapa Kita Harus Memilah Sampah</h2>
+                                        <p>Berbagai prestasi buruk telah didapat Indonesia berkenaan dengan sampah. Menurut data International Earth Science Information Network pada tahun 2012, Indonesia masuk dalam 10 besar negara terkotor di Dunia.</p>
+                                      </div>
+                                      <a href="https://www.panggungharjo.desa.id/alasan-kenapa-kita-harus-memilah-sampah/">Selengkapnya...</a>
+                                    </div>
+                                </div>
+                                <div class='card'>
+                                    <img src='img/kenapamemilah.JPG' alt="gambar gagal dimuat">
+                                    <div class='card-body'>
+                                      <div class='card-text'>
+                                        <h2>Kenapa Kita harus Memilah Sampah Sebelum Dibuang?</h2>
+                                        <p>Teman-teman, bagaimana kalau kita mulai membiasakan diri untuk memilah sampah sebelum dibuang? Kira-kira, kenapa kita harus memilah sampah sebelum dibuang?</p>
+                                      </div>
+                                      <a href="https://bobo.grid.id/read/08678346/kenapa-kita-harus-memilah-sampah-sebelum-dibuang">Selengkapnya...</a>
+                                    </div>
+                                </div>
+                                <div class='card'>
+                                    <img src='img/jenissampah.JPG' alt="gambar gagal dimuat">
+                                    <div class='card-body'>
+                                      <div class='card-text'>
+                                        <h2>Jenis-jenis Sampah dan Penjelasannya, Perlu Diketahui</h2>
+                                        <p>Masalah sampah sampai saat ini masih menjadi masalah krusial di Indonesia. Peneliti Lembaga Ilmu Pengetahuan Indonesia (LIPI) mengungkap bahwa salah satu faktor peningkatan volume sampah adalah perilaku masyarakat itu sendiri. Di mana membuang sampah sembarangan masih menjadi penyebab utama penumpukan sampah.</p>
+                                      </div>
+                                      <a href="https://www.merdeka.com/jateng/jenis-jenis-sampah-dan-penjelasannya-perlu-diketahui-kln.html">Selengkapnya...</a>
+                                    </div>
+                                </div>
+                                <div class='card'>
+                                    <img src='img/tantangan.JPG' alt="gambar gagal dimuat">
+                                    <div class='card-body'>
+                                      <div class='card-text'>
+                                        <h2>IKN, Tantangan Kelola Sampah – Standar Minimal Harus Berjalan</h2>
+                                        <p>Data Kementerian Lingkungan Hidup dan Kehutanan pada tahun 2021 mencatat  volume sampah di Indonesia yang terdiri dari 154 Kabupaten/kota se-Indonesia mencapai 18,2 juta ton/tahun. Sampah yang terkelola dengan baik hanya sebanyak 13,2 juta ton/tahun atau 72,95%. </p>
+                                      </div>
+                                      <a href="https://bsilhk.menlhk.go.id/index.php/2022/06/02/ikn-tantangan-kelola-sampah-standar-minimal-harus-berjalan/#:~:text=Data%20Kementerian%20Lingkungan%20Hidup%20dan,%2C2%20juta%20ton%2Ftahun.">Selengkapnya...</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </article>
+                    </section>
+
+                    <section class="menu" id="BankSampah">
+
+                        <h3 style="text-align: center">Bank Sampah Terdekat</h3>
+                        
+                        <ul class="controls">
+                            <li class="buttons button-active" data-filter="all">JABODETABEK</button>
+                            <li class="buttons" data-filter="Jakarta">Jakarta</li>
+                            <li class="buttons" data-filter="Bogor">Bogor</li>
+                            <li class="buttons" data-filter="Depok">Depok</li>
+                            <li class="buttons" data-filter="Tangerang">Tangerang</li>
+                            <li class="buttons" data-filter="Bekasi">Bekasi</li>
+                        </ul>
+                        
+                        <div class="image-container">
+
+                            <div class="image Jakarta">
+                                <a href="https://goo.gl/maps/CNmqFbyFN8c7VVSi8"
+                                target="_blank">
+                                <img src="img/BankSampahselarasMandiri.PNG" alt=" Bank Sampah Hijau Selaras">
+                                <p>Bank Sampah Hijau Selaras Mandiri</p>
+                                <p class="wilayah"> Jakarta Pusat</p>
+                            </a>
+                            </div>
+
+                            <div class="image Jakarta">
+                                <a href="https://goo.gl/maps/sw2qRnM5mBJABa7H8"
+                                target="_blank">
+                                <img src="img/banksampahwijayakusuma.PNG" alt="bank sampah wijaya kusuma">
+                                <p>Bank Wijaya Kusuma</p>
+                                <p class="wilayah"> Jakarta Pusat</p>
+                            </a>
+                            </div>
+
+                            <div class="image Jakarta">
+                                <a href="https://goo.gl/maps/qoZX66F8Acm1wGju7"
+                                target="_blank">
+                                <img src="img/BankSampahASri.PNG" alt="Bank Sampah Asri">
+                                <p>Bank Sampah Asri</p>
+                                <p class="wilayah"> Jakarta Timur</p>
+                            </a>
+                            </div>
+
+                            <div class="image Jakarta">
+                                <a href="https://goo.gl/maps/Br1RtLRtHLhZDU8a9"
+                                target="_blank">
+                                <img src="img/BankSampahSatuhati.PNG" alt="bank Sampah Induk satu Hati">
+                                <p>Bank Sampah Induk Satu Hati</p>
+                                <p class="wilayah"> Jakarta Barat</p>
+                            </a>
+                            </div>
+
+                            <div class="image Jakarta">
+                                <a href="https://goo.gl/maps/fZRAxH4p8GnjUvoy7"
+                                target="_blank">
+                                <img src="img/BankSampahCiber.PNG" alt="Bank Sampah Ciber">
+                                <p>Bank Sampah Ciber</p>
+                                <p class="wilayah"> Jakarta Utara</p>
+                            </a>
+                            </div>
+
+                            <div class="image Jakarta">
+                                <a href="https://goo.gl/maps/bKUKUr8UJghsuanL9"
+                                target="_blank">
+                                <img src="img/BankSampahMekaSari.PNG" alt="Bank Sampah Meka Sari">
+                                <p>Bank Sampah Meka Sari</p>
+                                <p class="wilayah"> Jakarta Selatan</p>
+                            </a>
+                            </div>
+                            
+
+
+                           
+                        
+                        
+                    
+                            <div class="image Bogor">
+                                <a href="https://goo.gl/maps/WCkteupbRk13Jigw6"
+                                target="_blank">
+                                <img src="img/warung jambu Bogor.jpg" alt="BANK SAMPAH Warung Jambu">
+                                <p>Bank Sampah Warung Jambu</p>
+                                <p class="wilayah">Bogor Utara</p>
+                            </a>
+                            </div>
+
+                            <div class="image Bogor">
+                                <a href="https://goo.gl/maps/buxkR2GkYCM6Ugop8"
+                                target="_blank">
+                                <img src="img/kenanga - Bogor.JPG" alt="Bang sampah kenanga">
+                                <p>Bank Sampah Kenanga</p>
+                                <p class="wilayah">Bogor Barat</p>
+                            </a>
+                            </div>
+
+                            <div class="image Bogor">
+                                <a href="https://goo.gl/maps/zSFstbkqYVy9Hm1b6"
+                                target="_blank">
+                                <img src="img/siliwangi bogor.JPG" alt="BANK SAMPAH  siliwangi">
+                                <p>Bank Sampah Siliwangi</p>
+                                <p class="wilayah">Bogor Timur</p>
+                            </a>
+                            </div>
+
+                            <div class="image Bogor">
+                                <a href="https://goo.gl/maps/W5xHZAgSnt81oqQ3A"
+                                target="_blank">
+                                <img src="img/SEJAHTERA - BOGOR.JPG" alt="BANK SAMPAH Sejahtera">
+                                <p>Bank Sampah Sejahtera</p>
+                                <p class="wilayah">Bogor Selatan</p>
+                            </a>
+                            </div>
+
+
+                        
+                          <div class="image Depok">
+                                <a href="https://goo.gl/maps/VCBQnVm8QtNtb9qF6"
+                                target="_blank">
+                                <img src="img/D_Induk Rumah Harum.png" alt="BANK SAMPAH Induk Rumah Harum">
+                                <p>Bank Sampah Induk Rumah Harum</p>
+                                <p class="wilayah">Depok Tengah</p>
+                            </a>
+                            </div>
+
+                            <div class="image Depok">
+                                <a href="https://goo.gl/maps/Qab245RuVzBypN3p9"
+                                target="_blank">
+                                <img src="img/BankSampahBaktiJaya.PNG" alt="BANK SAMPAH  Bakti Jaya">
+                                <p>Bank Sampah Bakti Jaya</p>
+                                <p class="wilayah">Depok tengah</p>
+                            </a>
+                            </div>
+
+                            <div class="image Depok">
+                                <a href="https://goo.gl/maps/CzEjqjbHBJM6FN9g9"
+                                target="_blank">
+                                <img src="img/D_Bumi Daya Bersih.png" alt="BANK SAMPAH Bumi Daya Bersih">
+                                <p>Bank Sampah Bumi Daya Bersih</p>
+                                <p class="wilayah">Depok Timur</p>
+                            </a>
+                            </div>
+
+                            <div class="image Depok">
+                                <a href="https://goo.gl/maps/La3yM7zQ9FxBvo5f8"
+                                target="_blank">
+                                <img src="img/D_Sakinah Tugu 16.png" alt="BANK SAMPAH Sakinah Tugu 16">
+                                <p>Bank Sampah Bumi Sakinah Tugu 16</p>
+                                <p class="wilayah">Depok Timur</p>
+                            </a>
+                            </div>
+
+                            <div class="image Depok">
+                                <a href="https://goo.gl/maps/QmwuUXYPnUMdtf8C6"
+                                target="_blank">
+                                <img src="img/D_Rumah Pelangi.png" alt="BANK SAMPAH Rumah pelangi">
+                                <p>Bank Sampah Rumah pelangi</p>
+                                <p class="wilayah">Cimanggis</p>
+                            </a>
+                            </div>
+                        
+                        
+                            <div class="image Tangerang">
+                                <a href="https://goo.gl/maps/Zm245Pqo1rTZQDJs8"
+                                target="_blank">
+                                <img src="img/bank sampah mandiri - TANGERANG.jpeg" alt="BANK SAMPAH Mandiri">
+                                <p>Bank Sampah Mandiri</p>
+                                <p class="wilayah">TelukNaga</p>
+                            </a>
+                            </div>
+
+                            <div class="image Tangerang">
+                                <a href="https://goo.gl/maps/etYbrN8o27hXtXtM9"
+                                target="_blank">
+                                <img src="img/bank sampah mutiara - tangerang.jpeg" alt="BANK SAMPAH Mutiara">
+                                <p>Bank Sampah Mutiara</p>
+                                <p class="wilayah">Ciledug</p>
+                            </a>
+                            </div>
+
+                            <div class="image Tangerang">
+                                <a href="https://goo.gl/maps/SrUkyGzonXG3XkDv7"
+                                target="_blank">
+                                <img src="img/KASUARI - TANGSEL.jpeg" alt="BANK SAMPAH KASUARI">
+                                <p>Bank Sampah Kasuari</p>
+                                <p class="wilayah">Tangerang Selatan</p>
+                            </a>
+                            </div>
+
+                            <div class="image Tangerang">
+                                <a href="https://goo.gl/maps/tqb6JfoSG5odxwDc9"
+                                target="_blank">
+                                <img src="img/TERATAI- TANGERANG.jpeg" alt="BANK SAMPAH TERATAI">
+                                <p>Bank Sampah Teratai</p>
+                                <p class="wilayah">Tangerang Selatan</p>
+                            </a>
+                            </div>
+
+                            <div class="image Bekasi">
+                                <a href="https://goo.gl/maps/nQhJGDyB449ZFbJn7"
+                                target="_blank">
+                                <img src="img/BANK SAMPAH ASOKA-BEKASI.jpeg" alt="BANK SAMPAH ASOKA">
+                                <p>Bank Sampah Asoka</p>
+                                <p class="wilayah">Bekasi Timur</p>
+                            </a>
+                            </div>
+
+                            <div class="image Bekasi">
+                                <a href="https://goo.gl/maps/fuch4oFFwYvK2HST6"
+                                target="_blank">
+                                <img src="img/BANK SAMPAH CANTIK RESIK - BEKASI.jpeg" alt="BANK SAMPAH Cantik Resik">
+                                <p>Bank Sampah Cantik Resik</p>
+                                <p class="wilayah">Jatih Asih</p>
+                            </a>
+                            </div>
+
+                            <div class="image Bekasi">
+                                <a href="https://goo.gl/maps/jkSzRGA6pZvBycRk7"
+                                target="_blank">
+                                <img src="img/BEKASI- BANK SAMPAH BINA MARGA2.jpeg" alt="BANK SAMPAH BINA MARGA2">
+                                <p>Bank Sampah Bina Marga2</p>
+                                <p class="wilayah">Bekasi Barat</p>
+                            </a>
+                            </div>
+                        
+                        </div>
+                        
+                        </section>
+                </main>
+                <footer>
+                    <div class="layar-dalam">
+                        <div>
+                            <img src="img/logofooter.png" width="300px" border-radius="30px">
+                        </div>
+
+                        
+                        <div class="daftar-kontak">
+                            <h5>Navigasi</h5>
+                          <ul>
+                            <li><a href="#Beranda">Beranda</a></li>
+                            <li><a href="#TentangKami">Tentang Kami </a></li>
+                            <li><a href="#Deteksi">Deteksi Sampah</a></li>
+                             <li><a href="#Artikel">Artikel</a></li>
+                          </ul>
+                            
+                        </div>
+                        <div>
+                            <h5>Alamat</h5>
+                            <h2>Trass Tech</h2>
+                            <p>
+                           Griya Philia Jamsostek RT04/RW014, Bekasi, Jawa Barat
+                        </p>
+                        
+                        </div>
+                    </div>
+                    <div class="layar-dalam">
+                        <div class="copyright">
+                           Copyright &copy; 2023 - Trass. All Rights Reserved.
+                        </div>
+                    </div>
+                </footer>
+           
+                <script
+                src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"
+              ></script>
+              <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+              <script
+                type="text/javascript"
+                src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"
+              ></script>
+              <script src="javascript.js"></script>
+</body>
+</html>
